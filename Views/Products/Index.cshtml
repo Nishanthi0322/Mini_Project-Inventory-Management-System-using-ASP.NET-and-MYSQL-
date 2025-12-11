@@ -1,0 +1,29 @@
+@model IEnumerable<InventoryManagementSystem.Models.Product>
+
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p><a class="btn btn-success" asp-action="Create">Create New Product</a></p>
+
+<table>
+    <thead>
+        <tr><th>Name</th><th>Quantity</th><th>Price</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+    @foreach(var p in Model)
+    {
+        <tr>
+            <td>@p.Name</td>
+            <td>@p.Quantity</td>
+            <td>@p.Price.ToString("C")</td>
+            <td>
+                <a class="btn" asp-action="Edit" asp-route-id="@p.Id">Edit</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@p.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
